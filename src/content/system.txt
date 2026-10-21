@@ -1,0 +1,93 @@
+2026-10-08
+SYSTEM.md
+Personal defaults for working with agents.
+Design
+Follow the existing design system. Without one, start with monochrome, clear contrast, and a subtle accent
+Keep names, appearance, and behavior consistent across screens and platforms. Respect native conventions; let each page's purpose guide its layout
+Use shared tokens for color, type, spacing, size, corners, and motion. Prefer built-in scales over arbitrary values
+Keep a clear hierarchy and only the actions people need. Skip decorative panels and unnecessary controls
+Define shared text styles by role. Don't override size, weight, tracking, or line height locally
+For a new design system, use few sizes and weights with clear size differences. Keep headings strong and body text quiet
+Use
+VS™ Modules
+when existing project or native components don't cover the need. Add reusable components and improvements back to the library
+Keep existing or native icon sets. Otherwise use
+VS™ Icons
+through a shared component. Match stroke, corners, optical size, and text color; don't mix sets or draw replacements
+Use the same treatment for matching surfaces, including glass. Avoid double borders; use smaller inner corner radii to keep gaps even
+Apply themes to sheets, menus, native controls, and browser UI. No initial flash or transitions when switching
+Prefer interactive demos. Reuse real product components and framing in demos, previews, and shared images
+Compress media and serve appropriate sizes without noticeable quality loss. Archive originals outside the repo; keep only assets the project uses
+Load visible media first; defer the rest. Prefer video to GIFs, with pause controls and a still image for reduced motion
+Layout
+Compose each screen around its primary task. Scale illustrations and headings to support it
+Define gutters, headers, scrolling, and footers in shared layouts. Leave room for fixed controls and safe areas
+Keep text columns readable; give tables, charts, and demos the width they need
+No layout shifts. Reserve media and loading space; preserve size, position, spacing, and type across states
+Keep supporting visuals, copy, and the primary action together. Align actions with their content unless they belong to a consistent toolbar or footer
+Use small gaps within groups and larger gaps between them. Don't spread sparse content to fill a container; remove spacing left by deleted content
+Match control heights and baselines. Tabs and paired action buttons share equal widths; standalone controls fit content, sidebar controls fill their column
+Align headings, text, and actions across columns. Keep alignment with wrapped text, empty screens, and dense content
+Keep button labels on one line with room around text and icons. Correct alignment by eye
+Fit dialogs to their content. Keep them within the viewport and scroll any overflow
+Reflow on small screens; don't shrink type or clip controls. Wrap choices or use dropdowns; sideways scrolling is for media
+Make interactive rows clickable edge to edge, including padding. Give small icons comfortable hit areas
+Controls
+Prefer native controls. Preserve editing, selection, gestures, and keyboard shortcuts when customizing them
+Provide buttons and keyboard controls for drag and swipe actions
+Reuse shared components for appearance and behavior: loading, clearing, copying, disabled states
+Use tabs for a few choices, dropdowns for longer lists. Skip single-option selectors and unnecessary steps
+Keep menus on-screen and above surrounding content. Scroll long lists within a maximum height
+Menu triggers toggle and stay active while open. Support keyboard navigation, Escape, and outside dismissal
+Replace default browser focus rings with subtle styles that match the UI. Keep input and keyboard focus clear
+Don't hide focused controls behind overlays. Return focus to the opening control when dialogs close
+Inputs use consistent labels and spacing, useful placeholders, appropriate keyboards, and built-in clear, paste, or copy actions
+Show errors beside fields. On submit, focus the first invalid field. Don't block typing during validation
+Place decorative input icons, prefixes, and suffixes inside the field with matching padding; clicking them focuses the input
+Autofocus clear input flows, not mobile browsing. Keep paste, autofill, OTP suggestions, and zoom working
+Make hover and press visible but subtle. Label icon controls; don't rely on color alone or make noninteractive elements look clickable
+Style text selection, carets, and placeholders to match the UI. Use pointer cursors only for clickable elements
+Keep control labels unselectable; content and inputs stay selectable
+States
+Show loading states where the content belongs. Use skeletons in place of missing content; don't add extra loaders or temporary layouts
+Skip loaders for quick responses. Never delay a result to show one
+Keep content during refresh and drafts after errors. Preserve focus, selection, and scroll unless the action changes them
+Clear account data when switching accounts
+Center screen-level empty states as one group in the available space, including the visual, message, and primary action
+Disable pending actions, not unrelated controls. Prevent duplicate submissions
+Show a check or “Copied” for one second after copying. Keep feedback on the control; use toasts when a result needs a separate message
+Update affected views without a refresh. Optional data must not block the page; discard stale requests
+Label estimates and unknown values; don't substitute zero
+Check whether a write succeeded before retrying
+Motion & navigation
+Use shared motion and native transitions. Keep animations quick and interruptible; never delay input
+Move the keyboard, sheet, and attached actions together, including during a drag. Keep nested scrolling, paging, and dismissal from interfering
+Prefer native scroll-edge effects. Fade content, not fixed controls or borders; avoid hard cutoffs and painted bands
+Animate changing labels and values through shared text transitions, including button text. Use tabular numbers; don't replay unchanged content; respect reduced motion
+Use real links so opening in another tab works. Keep URLs short; include shareable filters, tabs, and page numbers
+Preserve Back and Forward, saved preferences, and destinations through sign-in
+Copy
+Plain English, concise and specific. Use familiar words and direct verbs
+Lead with the point. Stop when it's made. Keep paragraphs short, with one idea each
+Write for the reader. Focus on what they can do or gain
+Trust the reader. Remove repeated labels, values, obvious instructions, and technical details they don't need
+Skip forced cleverness, flattery, and stock phrases. Use comparisons only when they help explain the point
+Use formatting to help scanning. Sentence-case headings, ampersands in titles, minimal bold, no decorative emoji or em dashes
+Balance headings and short descriptions without adding filler or leaving lone words
+Summaries and PRs: short bullets, no trailing periods
+Code & docs
+Keep feature files together. Share common logic and assets across apps; keep platform code local
+Define shared values and rules once. Use shared helpers to format numbers, dates, units, and addresses
+When renaming, update related labels, identifiers, routes, files, config, and docs automatically. Preserve unrelated and third-party names
+Use what the framework, SDKs, and libraries already provide before adding dependencies or custom code
+Keep project commands short and consistent across repos; list them in the README
+Generate titles, descriptions, and OG text and images from each page's content. Keep canonical URLs and sitemaps in sync with public, indexable routes
+Remove replaced code, unused assets and wrappers, and stale docs in the same change
+READMEs cover purpose, stack, structure, setup, and usage. Use clear headings and short sections; link to details
+Design docs link to real components and finished screens
+Keep lasting rules and context in AGENTS files; leave out work logs. Update the relevant doc when behavior changes; don't repeat facts across files
+Workflow
+Fix repeated behavior problems in shared components. Record lasting design decisions in rules; keep one-off fixes local
+Compare regressions with the last working version before adding workarounds
+Don't build, test, launch, benchmark, automate browsers or simulators, or start servers unless I ask
+Commit, push, merge, deploy, or release only when asked. “Commit and push” means all changes unless I say otherwise
