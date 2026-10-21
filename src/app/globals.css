@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Exact Departure Mono from tr.af (identical woff2 + metric fallback) */
 @font-face {
   font-family: departure;
   src: url("/media/departure_mono-s.p.29iafaar4mfrt.woff2") format("woff2");
   font-display: swap;
+}
+@font-face {
+  font-family: departure Fallback;
+  src: local(Arial);
+  ascent-override: 71.7%;
+  descent-override: 19.56%;
+  line-gap-override: 0%;
+  size-adjust: 139.46%;
 }
 
 :root {
@@ -17,7 +26,8 @@
   --color-record-line: #ffffff1f;
   --color-fill: #ffffff0d;
   --color-glass: #0a0a0a47;
-  --font-departure: departure, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-departure-mono: "departure", "departure Fallback";
+  --font-departure: var(--font-departure-mono);
   --blur-header: 6px;
   --transition: 0.2s ease-out;
   --window-inset: 0px;
@@ -206,21 +216,59 @@ a {
   }
 }
 
-.note-body {
-  text-transform: none;
-  letter-spacing: normal;
-  max-width: 42rem;
+/* Notes match tr.af: muted body (gray), fg headings, uppercase via body inherit */
+.note-article {
+  width: 100%;
+  max-width: none;
+  overflow-wrap: anywhere;
+  color: var(--color-muted);
+  text-wrap: pretty;
 }
-.note-body p,
-.note-body li,
-.note-body h2,
-.note-body a {
-  text-transform: none;
-  letter-spacing: normal;
+.note-article :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color-fg);
 }
-.note-body a {
+.note-article h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+.note-article :is(h2, h3, h4, h5, h6) {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+.note-article :is(p, ul, ol, blockquote) {
+  margin-block: 1.5rem;
+}
+.note-article li {
+  margin-block: 0.75rem;
+}
+.note-article > :first-child {
+  margin-top: 0;
+}
+.note-article ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.note-article ol {
+  padding-left: 1.25rem;
+  list-style: decimal;
+}
+.note-article :is(ul, ol)::marker,
+.note-article :is(ul, ol) ::marker {
+  color: var(--color-muted);
+}
+.note-article a {
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-muted);
+}
+.note-article a:hover {
+  color: var(--color-fg);
+  text-decoration-color: var(--color-fg);
+}
+.note-article blockquote {
+  padding-left: 1rem;
+  border-left: 1px dashed var(--color-line);
+  color: var(--color-muted);
 }
 
 .radio-bloom-colorful {

@@ -42,6 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en" data-skin="flat" suppressHydrationWarning>
       <head>
+        <link
+          rel="preload"
+          href="/media/departure_mono-s.p.29iafaar4mfrt.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="min-h-dvh">

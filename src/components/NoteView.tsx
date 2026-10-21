@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import path from "path";
+import type { ReactNode } from "react";
 import type { SitePage } from "../data/site";
 
 const LINK_MAP: Record<string, string> = {
@@ -25,7 +26,29 @@ const LINK_MAP: Record<string, string> = {
   "VS™ Icons": "https://visual.systems/modules/icon",
 };
 
-function linkify(text: string) {
+const SECTION_HEADINGS = new Set([
+  "Publish often",
+  "Act immediately",
+  "Be Transparent",
+  "Have a clear schedule",
+  "Charge more",
+  "Do it for the art",
+  "Aftermath",
+  "What's next?",
+  "Metrics, 1 week in:",
+  "4 months later:",
+  "9 months later:",
+  "Design",
+  "Layout",
+  "Controls",
+  "States",
+  "Motion & navigation",
+  "Copy",
+  "Code & docs",
+  "Workflow",
+]);
+
+function linkify(text: string): ReactNode[] {
   const keys = Object.keys(LINK_MAP).sort((a, b) => b.length - a.length);
   const parts: (string | { href: string; label: string })[] = [text];
   for (const key of keys) {
@@ -44,25 +67,7 @@ function linkify(text: string) {
     parts.length = 0;
     parts.push(...next);
   }
-  return parts;
-}
-
-function renderLine(line: string, i: number, title: string) {
-  if (!line.trim()) return <br key={i} />;
-
-  // Skip date + title lines already shown in breadcrumb
-  if (i === 0 && /^\d{4}-\d{2}-\d{2}$/.test(line)) return null;
-  if (i === 1 && line.toLowerCase() === title.toLowerCase()) return null;
-  if (i === 1 && line === "SYSTEM.md") return null;
-
-  const linked = linkify(line);
-  const isHeading =
-    /^(Publish often|Act immediately|Be Transparent|Have a clear schedule|Charge more|Do it for the art|Aftermath|What's next\?|Metrics,|Design|Layout|Controls|States|Motion & navigation|Copy|Code & docs|Workflow|\d+\/ )/i.test(
-      line,
-    ) ||
-    (line.length < 40 && !line.includes(".") && /^[A-Z]/.test(line));
-
-  const content = linked.map((p, j) =>
+  return parts.map((p, j) =>
     typeof p === "string" ? (
       <span key={j}>{p}</span>
     ) : (
@@ -71,41 +76,71 @@ function renderLine(line: string, i: number, title: string) {
       </a>
     ),
   );
+}
 
-  if (isHeading && !/^\d+\./.test(line) && !line.startsWith("It's") && !line.startsWith("Sure")) {
-    return (
-      <h2 key={i} className="mt-8 mb-2 text-fg">
-        {content}
-      </h2>
-    );
-  }
-
-  // Numbered truths list
-  if (title.includes("100") && i >= 2) {
-    return (
-      <p key={i} className="mb-3 flex gap-3 text-fg">
-        <span className="w-8 shrink-0 tabular-nums text-muted">{String(i - 1).padStart(2, "0")}</span>
-        <span>{content}</span>
-      </p>
-    );
-  }
-
-  return (
-    <p key={i} className="mb-4 text-fg">
-      {content}
-    </p>
-  );
+function contentLines(lines: string[], title: string) {
+  return lines.filter((line, i) => {
+    if (i === 0 && /^\d{4}-\d{2}-\d{2}$/.test(line)) return false;
+    if (i === 1 && line.toLowerCase() === title.toLowerCase()) return false;
+    if (i === 1 && line === "SYSTEM.md") return false;
+    return true;
+  });
 }
 
 export function NoteView({ page }: { page: SitePage }) {
   const file = path.join(process.cwd(), "src/content", `${page.slug}.txt`);
   const raw = readFileSync(file, "utf8");
-  const lines = raw.split("\n");
+  const lines = contentLines(raw.split("\n"), page.name);
+
+  // 100 Simple Truths → numbered list like tr.af
+  if (page.slug === "100") {
+    const items = lines.filter((l) => l.trim());
+    return (
+      <article className="note-article shrink-0">
+        <h1>{page.name}</h1>
+        <div>
+          <ol>
+            {items.map((item, i) => (
+              <li key={i}>{linkify(item)}</li>
+            ))}
+          </ol>
+        </div>
+      </article>
+    );
+  }
+
+  const blocks: ReactNode[] = [];
+  let para: string[] = [];
+
+  const flushPara = () => {
+    if (!para.length) return;
+    const text = para.join(" ");
+    para = [];
+    if (SECTION_HEADINGS.has(text) || /^\d+\/ /.test(text)) {
+      blocks.push(<h2 key={`h-${blocks.length}`}>{linkify(text)}</h2>);
+    } else {
+      blocks.push(<p key={`p-${blocks.length}`}>{linkify(text)}</p>);
+    }
+  };
+
+  for (const line of lines) {
+    if (!line.trim()) {
+      flushPara();
+      continue;
+    }
+    if (SECTION_HEADINGS.has(line) || /^\d+\/ /.test(line)) {
+      flushPara();
+      blocks.push(<h2 key={`h-${blocks.length}`}>{linkify(line)}</h2>);
+      continue;
+    }
+    para.push(line);
+  }
+  flushPara();
 
   return (
-    <article className="note-body w-full max-w-3xl pb-16">
-      <h1 className="mb-8 text-fg">{page.name}</h1>
-      <div>{lines.map((line, i) => renderLine(line, i, page.name))}</div>
+    <article className="note-article shrink-0">
+      <h1>{page.name}</h1>
+      <div>{blocks}</div>
     </article>
   );
 }
