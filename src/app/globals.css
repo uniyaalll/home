@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: departure;
+  src: url("/media/departure_mono-s.p.29iafaar4mfrt.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #000;
+  --color-fg: #fff;
+  --color-muted: #ffffffa3;
+  --color-online: #0f6;
+  --color-line: #282828;
+  --color-record-line: #ffffff1f;
+  --color-fill: #ffffff0d;
+  --color-glass: #0a0a0a47;
+  --font-departure: departure, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --blur-header: 6px;
+  --transition: 0.2s ease-out;
+  --window-inset: 0px;
+  --window-top: 0px;
+  --window-bottom: 0px;
+  --window-radius: 0px;
+  --row-radius: 0px;
+  --preview-pad: clamp(1rem, 3vw, 3rem);
+  --content-bottom: 2.5rem;
+  --bar-height: clamp(4rem, 7vw, 6rem);
+  --preview-fade: 6rem;
+  --sidebar-width: 18rem;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --color-bg: #f4f4f4;
+  --color-fg: #0a0a0a;
+  --color-muted: #0a0a0aa3;
+  --color-online: #00aa44;
+  --color-line: #d0d0d0;
+  --color-record-line: #0000001f;
+  --color-fill: #0000000d;
+  --color-glass: #ffffffa8;
+  color-scheme: light;
+}
+
+* {
+  border-style: dashed;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-departure);
+  font-size: 0.875rem;
+  line-height: 1.625;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin: 0;
+  min-height: 100dvh;
+}
+
+body * {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+::selection {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  color: var(--color-fg);
+}
+
+.bg-bg {
+  background-color: var(--color-bg);
+}
+.bg-fg {
+  background-color: var(--color-fg);
+}
+.text-bg {
+  color: var(--color-bg);
+}
+.text-fg {
+  color: var(--color-fg);
+}
+.text-muted {
+  color: var(--color-muted);
+}
+.border-line {
+  border-color: var(--color-line);
+}
+.border-fg {
+  border-color: var(--color-fg);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.finder-sidebar {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .finder-sidebar {
+    width: var(--sidebar-width);
+  }
+}
+
+.tree-branches details[open] > summary {
+  color: var(--color-fg);
+}
+.tree-branches details:not([open]) > summary .folder-open {
+  display: none;
+}
+.tree-branches details[open] > summary .folder-closed {
+  display: none;
+}
+.tree-branches details:not([open]) > summary .folder-open {
+  display: none;
+}
+
+.tree-list > * {
+  position: relative;
+}
+.tree-list > *::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--spacing, 0.25rem) * -5.5);
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-line) 0 3px,
+    transparent 3px 6px
+  );
+}
+.tree-list > *:last-child::before {
+  bottom: auto;
+  height: 1.5rem;
+  width: 0.75rem;
+  border-bottom: 1px dashed var(--color-line);
+  background: none;
+}
+.tree-list > *:not(:last-child)::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  transform: translateY(-1px);
+  left: calc(var(--spacing, 0.25rem) * -5.5);
+  width: 0.75rem;
+  border-bottom: 1px dashed var(--color-line);
+}
+.tree-list > *:first-child:not(:last-child)::after {
+  top: 2.25rem;
+}
+.tree-list > *:first-child:last-child::before {
+  height: 2.25rem;
+}
+.tree-list > *:first-child {
+  padding-top: 0.75rem;
+}
+
+.sidebar-row[aria-current="page"] {
+  color: var(--color-fg);
+}
+
+.motion-app {
+  transition-property: background-color, color, border-color, opacity, width, height, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.record-spin {
+  animation: record 8s linear infinite;
+}
+@keyframes record {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.note-body {
+  text-transform: none;
+  letter-spacing: normal;
+  max-width: 42rem;
+}
+.note-body p,
+.note-body li,
+.note-body h2,
+.note-body a {
+  text-transform: none;
+  letter-spacing: normal;
+}
+.note-body a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.radio-bloom-colorful {
+  background: radial-gradient(circle at 50% 70%, #ff4d6a55, transparent 55%);
+}
+.radio-bloom-sunset {
+  background: radial-gradient(circle at 50% 70%, #ff8a3d55, transparent 55%);
+}
+.radio-bloom-ocean {
+  background: radial-gradient(circle at 50% 70%, #3dd6ff55, transparent 55%);
+}

@@ -1,0 +1,369 @@
+{
+  "odyssey": [
+    {
+      "src": "/works/odyssey-0.mp4",
+      "poster": "/works/odyssey-0.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/works/odyssey-1.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/odyssey-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/odyssey-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/odyssey-4.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "deximal": [
+    {
+      "src": "/works/deximal-1.png",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/deximal-2.png",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/deximal-3.png",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/deximal-4.png",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/deximal-5.png",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/deximal-6.png",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "life": [
+    {
+      "src": "/works/life-1.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/life-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/life-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/life-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/life-5.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "siphon": [
+    {
+      "src": "/works/siphon-1.mp4",
+      "poster": "/works/siphon-1.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/works/siphon-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/siphon-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/siphon-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/siphon-5.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/siphon-6.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "streamius": [
+    {
+      "src": "/works/streamius-1.mp4",
+      "poster": "/works/streamius-1.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/works/streamius-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/streamius-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/streamius-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/streamius-5.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "labs": [
+    {
+      "src": "/works/labs-1.mp4",
+      "poster": "/works/labs-1.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/works/labs-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/labs-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/labs-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/labs-5.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/labs-6.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/works/labs-7.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "aeons": [
+    {
+      "src": "/artifacts/aeons-1.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-5.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-6.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/aeons-7.gif",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "anti": [
+    {
+      "src": "/artifacts/anti-1.mp4",
+      "poster": "/artifacts/anti-1.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-2.mp4",
+      "poster": "/artifacts/anti-2.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-3.mp4",
+      "poster": "/artifacts/anti-3.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-4.mp4",
+      "poster": "/artifacts/anti-4.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-5.mp4",
+      "poster": "/artifacts/anti-5.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-6.mp4",
+      "poster": "/artifacts/anti-6.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/anti-7.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/anti-8.mp4",
+      "poster": "/artifacts/anti-8.poster.jpg",
+      "type": "video"
+    }
+  ],
+  "based": [
+    {
+      "src": "/artifacts/based-1.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-2.gif",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-3.mp4",
+      "poster": "/artifacts/based-3.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/based-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-5.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-6.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-7.gif",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-8.gif",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-9.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-10.gif",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-11.gif",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/based-13.gif",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "checks": [
+    {
+      "src": "/artifacts/checks-1.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/checks-2.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/checks-3.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/checks-4.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/checks-5.jpg",
+      "poster": null,
+      "type": "image"
+    },
+    {
+      "src": "/artifacts/checks-6.jpg",
+      "poster": null,
+      "type": "image"
+    }
+  ],
+  "editions": [
+    {
+      "src": "/artifacts/editions-1.mp4",
+      "poster": "/artifacts/editions-1.poster.jpg",
+      "type": "video"
+    },
+    {
+      "src": "/artifacts/editions-2.mp4",
+      "poster": "/artifacts/editions-2.poster.jpg",
+      "type": "video"
+    }
+  ]
+}
