@@ -29,13 +29,19 @@ function Folder({
   external?: typeof LINKS;
 }) {
   const pathname = usePathname();
-  const open =
-    defaultOpen ||
-    items?.some((i) => pathname === i.href) ||
-    false;
+  const active = items?.some((i) => pathname === i.href) || false;
+  const [open, setOpen] = useState(Boolean(defaultOpen || active));
+
+  useEffect(() => {
+    if (active) setOpen(true);
+  }, [active]);
 
   return (
-    <details open={open} className="group/folder">
+    <details
+      open={open}
+      onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
+      className="group/folder"
+    >
       <summary className="folder-summary flex min-h-12 cursor-pointer select-none items-center gap-3 text-muted hover:text-fg focus-visible:text-fg focus-visible:outline-none [&::-webkit-details-marker]:hidden">
         <Icon name="chevron-right" className="folder-closed size-5 shrink-0" />
         <Icon name="chevron-down" className="folder-open size-5 shrink-0" />
@@ -91,10 +97,10 @@ export function Sidebar() {
 
   return (
     <aside
-      className="finder-sidebar no-scrollbar flex min-h-0 shrink-0 flex-col overflow-hidden overscroll-contain border-b border-line py-2 pl-[var(--preview-pad)] motion-app md:overflow-auto md:border-b-0 md:pb-6 md:pl-6 md:pt-[1.125rem]"
+      className="finder-sidebar no-scrollbar flex min-h-0 shrink-0 flex-col overflow-hidden overscroll-contain border-b border-line py-2 pl-[var(--preview-pad)] motion-app md:border-b-0 md:pb-6 md:pl-6 md:pt-[1.125rem]"
       data-menu-open={menuOpen}
     >
-      <nav className="w-full shrink-0 whitespace-nowrap" aria-label="Folder tree">
+      <nav className="no-scrollbar min-h-0 w-full flex-1 overflow-y-auto whitespace-nowrap" aria-label="Folder tree">
         <div>
           <div className="folder-heading relative flex min-h-12 shrink-0 select-none items-center gap-3 text-fg">
             <Icon name="logo" className="hidden size-5 shrink-0 md:block" />
@@ -154,7 +160,7 @@ export function Sidebar() {
       </nav>
 
       <div
-        className={`mt-auto shrink-0 items-center gap-2 px-3 pt-8 pb-4 md:flex md:pt-12 md:pb-0 ${menuOpen ? "flex" : "hidden"}`}
+        className={`mt-auto shrink-0 items-center gap-2 border-t border-line px-3 pt-4 pb-2 md:flex md:border-t-0 md:pt-6 md:pb-0 ${menuOpen ? "flex" : "hidden"}`}
       >
         {!privacy && (
           <div className="mr-1 hidden items-center gap-2 text-muted md:flex">
