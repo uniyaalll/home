@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "brand": "UNIYAALLL",
+    "handle": "@uniyaalll",
+    "referenceSite": "https://tr.af",
+    "description": "Machine-readable visual identity for the UNIYAALLL finder-style portfolio (tr.af replica).",
+    "fontFile": "departure_mono-s.p.29iafaar4mfrt.woff2",
+    "fontFileBytes": 13912,
+    "fontFormat": "woff2"
+  },
+  "font": {
+    "familyCss": "departure",
+    "fallbackFamilyCss": "departure Fallback",
+    "stack": ["departure", "departure Fallback"],
+    "faces": [
+      {
+        "family": "departure",
+        "src": "departure_mono-s.p.29iafaar4mfrt.woff2",
+        "format": "woff2",
+        "display": "swap"
+      },
+      {
+        "family": "departure Fallback",
+        "src": "local(Arial)",
+        "ascentOverride": "71.7%",
+        "descentOverride": "19.56%",
+        "lineGapOverride": "0%",
+        "sizeAdjust": "139.46%"
+      }
+    ],
+    "body": {
+      "fontSizeRem": 0.875,
+      "fontSizePxAt16Root": 14,
+      "lineHeightUnitless": 1.625,
+      "lineHeightPxAt14": 22.75,
+      "fontWeight": 400,
+      "letterSpacing": "0",
+      "textTransform": "uppercase",
+      "fontStyle": "normal",
+      "webkitFontSmoothing": "antialiased",
+      "textRendering": "optimizeLegibility"
+    },
+    "notes": {
+      "articleColorToken": "muted",
+      "headingColorToken": "fg",
+      "inheritsUppercaseFromBody": true,
+      "h1MarginBottomRem": 2,
+      "h2MarginTopRem": 3,
+      "h2MarginBottomRem": 1.5,
+      "blockMarginBlockRem": 1.5,
+      "liMarginBlockRem": 0.75,
+      "listPaddingLeftRem": 1.25,
+      "linkUnderlineOffsetPx": 4
+    }
+  },
+  "themes": {
+    "dark": {
+      "color-bg": "#000000",
+      "color-fg": "#ffffff",
+      "color-muted": "#ffffffa3",
+      "color-muted-rgba": "rgba(255,255,255,0.639)",
+      "color-online": "#00ff66",
+      "color-line": "#282828",
+      "color-record-line": "#ffffff1f",
+      "color-fill": "#ffffff0d",
+      "color-glass": "#0a0a0a47",
+      "color-scheme": "dark"
+    },
+    "light": {
+      "color-bg": "#f4f4f4",
+      "color-fg": "#0a0a0a",
+      "color-muted": "#0a0a0aa3",
+      "color-muted-rgba": "rgba(10,10,10,0.639)",
+      "color-online": "#00aa44",
+      "color-line": "#d0d0d0",
+      "color-record-line": "#0000001f",
+      "color-fill": "#0000000d",
+      "color-glass": "#ffffffa8",
+      "color-scheme": "light"
+    }
+  },
+  "themePersistence": {
+    "htmlAttribute": "data-theme",
+    "values": ["dark", "light"],
+    "localStorageKey": "uniyaalll-theme",
+    "bootScriptPreventsFlash": true
+  },
+  "spacing": {
+    "tailwindSpacingRem": 0.25,
+    "previewPad": "clamp(1rem, 3vw, 3rem)",
+    "previewPadPxRange": [16, 48],
+    "contentBottomRem": 2.5,
+    "contentBottomPx": 40,
+    "barHeight": "clamp(4rem, 7vw, 6rem)",
+    "barHeightPxRange": [64, 96],
+    "previewFadeRem": 6,
+    "previewFadePx": 96,
+    "sidebarWidthRem": 18,
+    "sidebarWidthPx": 288,
+    "windowRadiusPx": 0,
+    "rowRadiusPx": 0,
+    "blurHeaderPx": 6,
+    "transition": "0.2s ease-out"
+  },
+  "layout": {
+    "skin": "flat",
+    "shell": "finder",
+    "desktopBreakpointPx": 768,
+    "sidebar": {
+      "desktopWidthPx": 288,
+      "desktopPaddingLeftPx": 24,
+      "desktopPaddingTopPx": 18,
+      "desktopPaddingBottomPx": 24,
+      "rowMinHeightPx": 48,
+      "rowGapPx": 12,
+      "rowPaddingYPx": 12,
+      "rowPaddingLeftPx": 12,
+      "iconSizePx": 20,
+      "labelTranslateYPx": 1,
+      "treeIndentMlPx": 10,
+      "treeLinePattern": "repeating-linear-gradient(to bottom, var(--color-line) 0 3px, transparent 3px 6px)",
+      "treeElbowWidthPx": 12,
+      "treeElbowTopPx": 24
+    },
+    "footerControls": {
+      "privacyButtonPx": 24,
+      "themeButtonPx": 32,
+      "border": "1px dashed var(--color-line)",
+      "position": "bottom of left sidebar, pinned (mt-auto)"
+    },
+    "breadcrumb": {
+      "minHeightToken": "--bar-height",
+      "paddingXToken": "--preview-pad",
+      "paddingYPx": 12,
+      "gapPx": 12,
+      "hitMinHeightPx": 44,
+      "infoButtonPx": 44,
+      "color": "muted",
+      "activeColor": "fg",
+      "format": "UNIYAALLL / {SECTION} / {PAGE}"
+    },
+    "content": {
+      "firstChildMarginTop": "calc(var(--preview-fade) + 0.375rem)",
+      "firstChildMarginTopPxApprox": 102,
+      "bottomPaddingToken": "--content-bottom"
+    },
+    "media": {
+      "aspectRatio": "16 / 9",
+      "border": "1px dashed var(--color-line)",
+      "radiusToken": "--window-radius",
+      "gridMobileCols": 1,
+      "gridDesktopCols": 2,
+      "gapToken": "--preview-pad",
+      "videoControlButtonPx": 44,
+      "videoControlBarPaddingPx": 8,
+      "captionPaddingPx": 20
+    },
+    "radio": {
+      "minHeightPx": 256,
+      "discSizePx": { "base": 192, "md": 224 },
+      "playButtonPx": 56,
+      "framePaddingPx": 40,
+      "spinAnimation": "record 8s linear infinite",
+      "youtubeIds": {
+        "lofi": "rFZHOHl-L8A",
+        "soul": "E2vONfzoyRI",
+        "ambient": "S_MOd40zlYU"
+      },
+      "bloom": {
+        "colorful": "radial-gradient(circle at 50% 70%, #ff4d6a55, transparent 55%)",
+        "sunset": "radial-gradient(circle at 50% 70%, #ff8a3d55, transparent 55%)",
+        "ocean": "radial-gradient(circle at 50% 70%, #3dd6ff55, transparent 55%)"
+      }
+    }
+  },
+  "borders": {
+    "defaultStyle": "dashed",
+    "defaultWidthPx": 1,
+    "defaultColorToken": "line",
+    "defaultRadiusPx": 0
+  },
+  "selection": {
+    "backgroundToken": "fg",
+    "colorToken": "bg"
+  },
+  "routes": {
+    "works": ["odyssey", "deximal", "life", "siphon", "streamius", "labs"],
+    "artifacts": ["aeons", "anti", "based", "checks", "editions"],
+    "notes": ["100", "6", "music", "system"],
+    "sounds": ["lofi", "soul", "ambient"],
+    "externalLinks": [
+      { "name": "x.com", "href": "https://x.com/traf" },
+      { "name": "Instagram", "href": "https://instagram.com/traf" },
+      { "name": "GitHub", "href": "https://github.com/traf" }
+    ]
+  },
+  "icons": {
+    "navSizePx": 20,
+    "viewBox": "0 0 24 24",
+    "strokeWidthTypical": 1.5,
+    "color": "currentColor",
+    "set": [
+      "logo",
+      "chevron-right",
+      "chevron-down",
+      "folder",
+      "folder-open",
+      "file",
+      "odyssey",
+      "deximal",
+      "life",
+      "siphon",
+      "streamius",
+      "labs",
+      "aeons",
+      "anti",
+      "based",
+      "checks",
+      "editions",
+      "record",
+      "x",
+      "instagram",
+      "github",
+      "info",
+      "play",
+      "pause",
+      "mute",
+      "unmute",
+      "sun",
+      "moon",
+      "menu",
+      "plus"
+    ]
+  },
+  "doNot": [
+    "Do not substitute Inter, Roboto, Arial, Geist, JetBrains Mono, or system-ui as the primary UI font",
+    "Do not render notes in white sentence case — use muted + uppercase",
+    "Do not use purple/indigo gradient AI aesthetics",
+    "Do not use multi-layer shadows or rounded-full pills in chrome",
+    "Do not brand as TRAF — brand is UNIYAALLL"
+  ]
+}

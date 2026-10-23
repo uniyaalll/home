@@ -3,9 +3,16 @@
 import { useTheme } from "../lib/theme";
 import { Icon } from "./Icons";
 
-export function ThemeToggle() {
+type ThemeToggleProps = {
+  size?: "sm" | "md";
+};
+
+export function ThemeToggle({ size = "sm" }: ThemeToggleProps) {
   const { theme, toggle } = useTheme();
   const isDark = theme === "dark";
+  const box = size === "md" ? "size-8" : "size-6";
+  const icon = size === "md" ? "h-4 w-4" : "h-3.5 w-3.5";
+  const iconPx = size === "md" ? 16 : 14;
 
   return (
     <button
@@ -14,9 +21,9 @@ export function ThemeToggle() {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={!isDark}
       title={isDark ? "Light mode" : "Dark mode"}
-      className="flex size-6 shrink-0 cursor-pointer select-none items-center justify-center border border-line bg-bg text-muted hover:text-fg focus-visible:text-fg focus-visible:outline-none"
+      className={`flex ${box} shrink-0 cursor-pointer select-none items-center justify-center border border-line bg-bg text-muted hover:text-fg focus-visible:text-fg focus-visible:outline-none`}
     >
-      <Icon name={isDark ? "sun" : "moon"} className="h-3.5 w-3.5" size={14} />
+      <Icon name={isDark ? "sun" : "moon"} className={icon} size={iconPx} />
     </button>
   );
 }
