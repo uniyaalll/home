@@ -1,4 +1,4 @@
-import { BRAND, BRAND_HANDLE, LINKS, WORKS } from "./site";
+import { BRAND, BRAND_HANDLE, LINKS } from "./site";
 
 export type BioLink = {
   id: string;
@@ -25,14 +25,38 @@ export const BIO_LINKS: BioLink[] = [
     description: "Finder · works & artifacts",
     icon: "folder",
   },
-  ...WORKS.slice(0, 4).map((work) => ({
-    id: work.slug,
-    label: work.name,
-    href: work.external?.href ?? work.href,
-    description: work.about?.split("·")[0]?.trim(),
-    icon: work.icon,
-    external: Boolean(work.external?.href),
-  })),
+  {
+    id: "odyssey",
+    label: "Odyssey",
+    href: "https://odyssey-hq.vercel.app/",
+    description: "Unofficial Cosmos mac app",
+    icon: "odyssey",
+    external: true,
+  },
+  {
+    id: "deximal",
+    label: "Deximal",
+    href: "https://deximal.com",
+    description: "Personal wallet · iOS beta",
+    icon: "deximal",
+    external: true,
+  },
+  {
+    id: "life",
+    label: "Life",
+    href: "https://lifeapp.so",
+    description: "Capture & collect memories",
+    icon: "life",
+    external: true,
+  },
+  {
+    id: "siphon",
+    label: "Siphon",
+    href: "https://siphon.sh",
+    description: "Intent-based trading",
+    icon: "siphon",
+    external: true,
+  },
   {
     id: "notes",
     label: "Notes",
