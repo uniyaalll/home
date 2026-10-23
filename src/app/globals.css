@@ -8,6 +8,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: departure Fallback;
+  src: local(Arial);
+  ascent-override: 71.7%;
+  descent-override: 19.56%;
+  line-gap-override: 0%;
+  size-adjust: 139.46%;
+}
+
 :root {
   --color-bg: #000;
   --color-fg: #fff;
@@ -17,7 +26,7 @@
   --color-record-line: #ffffff1f;
   --color-fill: #ffffff0d;
   --color-glass: #0a0a0a47;
-  --font-departure: departure, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-departure: "departure", "departure Fallback";
   --blur-header: 6px;
   --transition: 0.2s ease-out;
   --window-inset: 0px;
@@ -231,4 +240,127 @@ a {
 }
 .radio-bloom-ocean {
   background: radial-gradient(circle at 50% 70%, #3dd6ff55, transparent 55%);
+}
+
+.bg-online {
+  background-color: var(--color-online);
+}
+
+/* ——— Link in bio ——— */
+.bio-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--color-fill), transparent 60%),
+    radial-gradient(circle at 50% 110%, var(--color-fill), transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 47px,
+      var(--color-line) 47px,
+      var(--color-line) 48px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 47px,
+      var(--color-line) 47px,
+      var(--color-line) 48px
+    );
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, #000 20%, transparent 75%);
+  opacity: 0.85;
+}
+
+.bio-brand {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.bio-presence {
+  clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%);
+  animation: bio-pulse 2.4s ease-in-out infinite;
+}
+
+.bio-mark,
+.bio-header,
+.bio-link,
+.bio-social,
+.bio-footer {
+  animation: bio-rise 0.55s ease-out both;
+}
+
+.bio-header {
+  animation-delay: 40ms;
+}
+
+.bio-mark {
+  animation-delay: 0ms;
+  animation-name: bio-mark-in;
+}
+
+.bio-footer {
+  animation-delay: 560ms;
+}
+
+.bio-link,
+.bio-social {
+  transition-property: color, border-color, background-color, transform;
+  transition-duration: var(--transition);
+  transition-timing-function: ease-out;
+}
+
+.bio-link:hover,
+.bio-link:focus-visible {
+  transform: translateY(-1px);
+}
+
+@keyframes bio-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bio-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bio-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition: 0s;
+  }
+
+  .bio-mark,
+  .bio-header,
+  .bio-link,
+  .bio-social,
+  .bio-footer,
+  .bio-presence {
+    animation: none !important;
+  }
+
+  .bio-link:hover,
+  .bio-link:focus-visible {
+    transform: none;
+  }
 }
