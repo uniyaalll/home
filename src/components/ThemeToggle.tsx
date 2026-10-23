@@ -21,8 +21,9 @@ export function ThemeToggle({ size = "sm" }: ThemeToggleProps) {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={!isDark}
       title={isDark ? "Light mode" : "Dark mode"}
-      className={`flex ${box} shrink-0 cursor-pointer select-none items-center justify-center border border-line bg-bg text-muted hover:text-fg focus-visible:text-fg focus-visible:outline-none`}
+      className={`relative z-20 flex ${box} shrink-0 cursor-pointer select-none items-center justify-center border border-line bg-bg text-muted hover:text-fg focus-visible:text-fg focus-visible:outline-none motion-app`}
     >
+
       <Icon name={isDark ? "sun" : "moon"} className={icon} size={iconPx} />
     </button>
   );
