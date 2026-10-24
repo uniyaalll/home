@@ -342,13 +342,15 @@ a {
   }
 }
 
-@keyframes bio-pulse {
+@keyframes bio-handle-glow {
   0%,
   100% {
     opacity: 1;
+    text-shadow: 0 0 0.85em color-mix(in srgb, var(--color-online) 75%, transparent);
   }
   50% {
-    opacity: 0.45;
+    opacity: 0.72;
+    text-shadow: 0 0 0.35em color-mix(in srgb, var(--color-online) 40%, transparent);
   }
 }
 
@@ -362,7 +364,7 @@ a {
   .bio-link,
   .bio-social,
   .bio-footer,
-  .bio-presence {
+  .bio-handle-glow {
     animation: none !important;
   }
 
