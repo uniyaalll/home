@@ -33,13 +33,8 @@ export function LinkBio() {
 
           <h1 className="bio-brand text-fg">{BIO.brand}</h1>
 
-          <p className="bio-handle mt-2 flex items-center text-muted">
-            <span
-              className="bio-presence inline-block shrink-0 bg-online"
-              title="Online"
-              aria-label="Online"
-            />
-            <span>{BIO.handle}</span>
+          <p className="bio-handle bio-handle-glow mt-2" title="Online">
+            {BIO.handle}
           </p>
 
           <p className="bio-tagline mt-4 max-w-[22rem] text-muted">{BIO.tagline}</p>

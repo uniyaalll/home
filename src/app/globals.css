@@ -279,17 +279,12 @@ a {
 .bio-handle {
   font-size: 0.4375rem; /* 50% of body 0.875rem */
   line-height: 1.625;
-  gap: 0.5em;
 }
 
-.bio-handle .bio-presence {
-  width: 1em;
-  height: 1em;
-}
-
-.bio-presence {
-  clip-path: polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%);
-  animation: bio-pulse 2.4s ease-in-out infinite;
+.bio-handle-glow {
+  color: var(--color-online);
+  text-shadow: 0 0 0.75em color-mix(in srgb, var(--color-online) 70%, transparent);
+  animation: bio-handle-glow 2.4s ease-in-out infinite;
 }
 
 .bio-mark,
