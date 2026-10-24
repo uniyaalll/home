@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: `${BRAND} | %s`,
   },
   description: "Personal site of uniyaalll. Experiments, works, and notes.",
-  metadataBase: new URL("https://uniyaalll.local"),
+  metadataBase: new URL("https://uniyaalll.github.io/home"),
   openGraph: {
     title: BRAND,
     description: "Personal site of uniyaalll. Experiments, works, and notes.",

@@ -8,7 +8,14 @@ import { ThemeToggle } from "./ThemeToggle";
 function ExternalMark() {
   return (
     <span className="ml-auto shrink-0 text-muted group-hover:text-fg" aria-hidden>
-      ↗
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none" className="block">
+        <path
+          d="M4.5 11.5L11.5 4.5M11.5 4.5H6M11.5 4.5V10"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+        />
+      </svg>
     </span>
   );
 }
@@ -16,7 +23,14 @@ function ExternalMark() {
 function InternalMark() {
   return (
     <span className="ml-auto shrink-0 text-muted group-hover:text-fg" aria-hidden>
-      →
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none" className="block">
+        <path
+          d="M3.5 8H12.5M12.5 8L9 4.5M12.5 8L9 11.5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+        />
+      </svg>
     </span>
   );
 }

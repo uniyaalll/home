@@ -4,7 +4,8 @@
 
 @font-face {
   font-family: departure;
-  src: url("/media/departure_mono-s.p.29iafaar4mfrt.woff2") format("woff2");
+  /* Relative import so Next rewrites this under basePath (/home on GitHub Pages). */
+  src: url("../fonts/departure_mono-s.p.29iafaar4mfrt.woff2") format("woff2");
   font-display: swap;
 }
 
