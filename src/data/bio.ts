@@ -1,5 +1,10 @@
 import { BRAND, BRAND_HANDLE, LINKS } from "./site";
 
+/**
+ * Edit this file to change the link-in-bio page.
+ * GitHub: https://github.com/uniyaalll/home/edit/main/src/data/bio.ts
+ */
+
 export type BioLink = {
   id: string;
   label: string;
