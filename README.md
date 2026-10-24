@@ -1,15 +1,27 @@
 # UNIYAALLL
 
-A faithful replica of [tr.af](https://tr.af) with branding renamed to **UNIYAALLL**, plus a functional light/dark mode toggle in the left sidebar.
+Link-in-bio homepage + finder-style portfolio (tr.af replica), branded **UNIYAALLL**.
+
+## Live site (GitHub Pages)
+
+After Pages is enabled and this workflow has deployed:
+
+**https://uniyaalll.github.io/home/**
+
+### Edit the link-in-bio
+
+Change brand, tagline, and links in:
+
+**https://github.com/uniyaalll/home/edit/main/src/data/bio.ts**
+
+Pushes to `main` rebuild and redeploy automatically.
 
 ## Features
 
+- Responsive link-in-bio at `/` (theme toggle, socials, featured works)
 - Finder-style sidebar with Works, Artifacts, Notes, Sounds, and links
-- All project pages with media galleries and video controls
-- Notes (`100`, `6`, `music`, `system`)
-- Sounds radio players (Lofi / Soul / Ambient via YouTube)
-- Square **theme toggle** (sun/moon) at the bottom of the left pane
-- Privacy `/` button with online presence indicator
+- Notes (`100`, `6`, `music`, `system`) and Sounds radio players
+- Dark / light mode via `uniyaalll-theme` localStorage
 
 ## Develop
 
@@ -20,9 +32,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Build
+## Build (static)
 
 ```bash
-npm run build
-npm start
+npm run build   # writes to out/
+npx serve out
 ```
+
+For GitHub Pages builds, set `GITHUB_PAGES=true` (adds basePath `/home`).
