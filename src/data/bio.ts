@@ -20,5 +20,5 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = [
   { label: "Instagram", href: "/" },
   { label: "YouTube", href: "/" },
-  { label: "X", href: "/" },
+  { label: "X.COM", href: "/" },
 ] as const;
