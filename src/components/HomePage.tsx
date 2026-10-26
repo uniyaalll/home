@@ -28,10 +28,10 @@ function NortheastArrow() {
 
 export function HomePage() {
   return (
-    <div className="home-shell relative min-h-dvh">
+    <div className="home-shell">
       <div className="home-atmosphere pointer-events-none absolute inset-0" aria-hidden />
       <div
-        className="home-grain pointer-events-none fixed inset-0 z-[5]"
+        className="home-grain pointer-events-none absolute inset-0 z-[5]"
         style={{ backgroundImage: `url(${asset("/noise.png")})` }}
         aria-hidden
       />
