@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { LinkBio } from "../components/LinkBio";
-import { BRAND, BRAND_HANDLE } from "../data/site";
+import { HomePage } from "../components/HomePage";
+import { BIO } from "../data/bio";
 
 export const metadata: Metadata = {
-  title: `${BRAND} · Links`,
-  description: `Link in bio for ${BRAND_HANDLE}. Works, artifacts, notes & sounds.`,
+  title: BIO.name,
+  description: BIO.intro,
 };
 
 export default function Home() {
-  return <LinkBio />;
+  return <HomePage />;
 }
