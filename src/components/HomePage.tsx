@@ -47,7 +47,27 @@ export function HomePage() {
       </header>
 
       <main className="home-main">
-        <div className="home-nav-shell">
+        <div className="home-stage">
+          <div className="home-preview">
+            <div className="home-preview-frame">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset(BIO.previewSrc)}
+                alt={BIO.previewAlt}
+                className="home-preview-img"
+                width={1200}
+                height={1500}
+              />
+              <div
+                className="home-preview-grain"
+                style={{
+                  backgroundImage: `url(${asset("/noise.png")}), url(${asset("/noise-2.png")})`,
+                }}
+                aria-hidden
+              />
+            </div>
+          </div>
+
           <nav className="home-nav" aria-label="Primary">
             {NAV_LINKS.map((item) => (
               <Link key={item.label} href={item.href} className="home-nav-row text-muted">

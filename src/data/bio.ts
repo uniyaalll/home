@@ -5,6 +5,8 @@
 export const BIO = {
   name: "UNIYAALLL",
   intro: "Designer, creator & independent maker.",
+  previewSrc: "/preview.jpg",
+  previewAlt: "Interface preview",
 } as const;
 
 export const NAV_LINKS = [
