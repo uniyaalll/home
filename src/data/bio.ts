@@ -3,10 +3,8 @@
  */
 
 export const BIO = {
-  name: "Ashutosh",
+  name: "UNIYAALLL",
   intro: "Designer, creator & independent maker.",
-  profileSrc: "/profile.jpg",
-  heroSrc: "/hero-stipple.jpg",
 } as const;
 
 export const NAV_LINKS = [
