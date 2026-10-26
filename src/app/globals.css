@@ -289,25 +289,28 @@ html[data-theme="light"] .home-grain {
   border-top: 1px dashed var(--color-line);
 }
 
-/* Shared column: header, tree spine, and socials share one left edge. */
+/* Left-anchored shell: title, tree spine, and socials share one left edge.
+   Toggle aligns with the preview's right edge. */
 .home-shell {
-  --home-chrome-max: 42rem;
-  --home-chrome-pad-x: 1.25rem;
-  --home-tree-gutter: 1.25rem;
+  --home-chrome-max: 72rem;
+  --home-pad-x: 1.25rem;
+  --home-tree-gutter: 1.75rem; /* ~40% more space from spine to labels */
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .home-shell {
-    --home-chrome-max: 46rem;
-    --home-chrome-pad-x: 1.5rem;
+    --home-pad-x: clamp(1.5rem, 4vw, 3rem);
   }
 }
 
-@media (min-width: 1024px) {
-  .home-shell {
-    --home-chrome-max: 52rem;
-    --home-chrome-pad-x: 2rem;
-  }
+.home-chrome-inner,
+.home-stage {
+  width: 100%;
+  max-width: var(--home-chrome-max);
+  margin-left: 0;
+  margin-right: auto;
+  padding-inline: var(--home-pad-x);
+  box-sizing: border-box;
 }
 
 .home-chrome-inner {
@@ -315,21 +318,12 @@ html[data-theme="light"] .home-grain {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  width: 100%;
-  max-width: var(--home-chrome-max);
-  margin-inline: auto;
-  padding: 1rem var(--home-chrome-pad-x);
+  padding-block: 1rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .home-chrome-inner {
     padding-block: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-chrome-inner {
-    padding-block: 1.5rem;
   }
 }
 
@@ -353,27 +347,97 @@ html[data-theme="light"] .home-grain {
   line-height: 1.625;
 }
 
+@media (max-width: 767px) {
+  .home-intro {
+    display: none;
+  }
+}
+
 .home-main {
   position: relative;
   z-index: 10;
   display: flex;
   min-height: 100dvh;
   align-items: center;
-  justify-content: center;
-  padding: 7.5rem 0;
+  justify-content: flex-start;
+  padding: 6.5rem 0;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .home-main {
-    padding-block: 8.5rem;
+    padding-block: 8rem;
   }
 }
 
-.home-nav-shell {
+.home-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
   width: 100%;
-  max-width: var(--home-chrome-max);
-  margin-inline: auto;
-  padding-inline: var(--home-chrome-pad-x);
+}
+
+@media (min-width: 768px) {
+  .home-stage {
+    grid-template-columns: minmax(15rem, 22rem) minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+  }
+}
+
+.home-preview {
+  order: 1;
+  min-width: 0;
+}
+
+.home-nav {
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  .home-preview {
+    order: 2;
+  }
+
+  .home-nav {
+    order: 1;
+  }
+}
+
+.home-preview-frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: min(70vh, 36rem);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--window-radius);
+  background: #000;
+}
+
+@media (min-width: 768px) {
+  .home-preview-frame {
+    max-height: min(72vh, 42rem);
+  }
+}
+
+.home-preview-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-preview-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: 140px 140px, 160px 160px;
+  background-repeat: repeat;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  animation: home-grain-drift 0.9s steps(3) infinite;
 }
 
 .home-nav {
@@ -384,14 +448,13 @@ html[data-theme="light"] .home-grain {
   padding-left: var(--home-tree-gutter);
 }
 
-/* Vertical dashed spine — starts a little above Work; left edge
-   aligns with header + socials. */
+/* Vertical dashed spine — starts above Work; left edge = title/socials. */
 .home-nav::before {
   content: "";
   pointer-events: none;
   position: absolute;
   top: -2.75rem;
-  bottom: 1.5rem;
+  bottom: 2.1rem;
   left: 0;
   width: 1px;
   background: repeating-linear-gradient(
@@ -401,13 +464,49 @@ html[data-theme="light"] .home-grain {
   );
 }
 
+/* On mobile, preview sits above nav; its left border meets the tree spine. */
+@media (max-width: 767px) {
+  .home-stage {
+    position: relative;
+    padding-left: calc(var(--home-pad-x) + var(--home-tree-gutter));
+    padding-right: var(--home-pad-x);
+  }
+
+  .home-stage::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 2.1rem;
+    left: var(--home-pad-x);
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--color-line) 0 3px,
+      transparent 3px 6px
+    );
+    z-index: 1;
+  }
+
+  .home-preview {
+    /* Pull frame left so its dashed border sits on the spine. */
+    margin-left: calc(var(--home-tree-gutter) * -1);
+    width: calc(100% + var(--home-tree-gutter));
+  }
+
+  .home-nav::before {
+    /* Continuous spine comes from .home-stage::before */
+    display: none;
+  }
+}
+
 .home-nav-row {
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  min-height: 3rem;
-  padding: 0.75rem 0.25rem;
+  min-height: 4.2rem; /* 3rem + 40% */
+  padding: 1.05rem 0.25rem; /* 0.75rem + 40% */
   border-bottom: 1px dashed var(--color-line);
   transition: color var(--transition);
 }
@@ -465,7 +564,7 @@ html[data-theme="light"] .home-grain {
 }
 
 .home-header,
-.home-nav,
+.home-stage,
 .home-socials {
   animation: home-rise 0.55s ease-out both;
 }
@@ -474,7 +573,7 @@ html[data-theme="light"] .home-grain {
   animation-delay: 40ms;
 }
 
-.home-nav {
+.home-stage {
   animation-delay: 120ms;
 }
 
@@ -505,15 +604,35 @@ html[data-theme="light"] .home-grain {
   }
 }
 
+@keyframes home-grain-drift {
+  0% {
+    background-position: 0 0, 0 0;
+    opacity: 0.14;
+  }
+  33% {
+    background-position: -22px 14px, 18px -10px;
+    opacity: 0.2;
+  }
+  66% {
+    background-position: 16px -20px, -12px 22px;
+    opacity: 0.12;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+    opacity: 0.16;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --transition: 0s;
   }
 
   .home-header,
-  .home-nav,
+  .home-stage,
   .home-socials,
-  .home-grain {
+  .home-grain,
+  .home-preview-grain {
     animation: none !important;
   }
 }
