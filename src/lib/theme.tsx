@@ -21,36 +21,43 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "uniyaalll-theme";
 
+function readDomTheme(): Theme {
+  const attr = document.documentElement.getAttribute("data-theme");
+  return attr === "light" ? "light" : "dark";
+}
+
+function applyTheme(t: Theme) {
+  document.documentElement.setAttribute("data-theme", t);
+  try {
+    window.localStorage.setItem(STORAGE_KEY, t);
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("dark");
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const initial =
-      stored === "light" || stored === "dark"
-        ? stored
-        : window.matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark";
-    setThemeState(initial);
-    document.documentElement.setAttribute("data-theme", initial);
-    setReady(true);
+    setThemeState(readDomTheme());
   }, []);
 
   const setTheme = useCallback((t: Theme) => {
+    applyTheme(t);
     setThemeState(t);
-    document.documentElement.setAttribute("data-theme", t);
-    window.localStorage.setItem(STORAGE_KEY, t);
   }, []);
 
   const toggle = useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [setTheme, theme]);
+    setThemeState((prev) => {
+      const next: Theme = prev === "dark" ? "light" : "dark";
+      applyTheme(next);
+      return next;
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggle, setTheme }}>
-      <div style={{ visibility: ready ? "visible" : "visible" }}>{children}</div>
+      {children}
     </ThemeContext.Provider>
   );
 }
