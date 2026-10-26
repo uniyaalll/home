@@ -485,6 +485,13 @@ body:has(.home-shell) {
 
 /* On mobile, preview sits above nav; its left border meets the tree spine. */
 @media (max-width: 767px) {
+  /* Top gap above image = same as left/right image margins (--home-pad-x).
+     Don't change side padding (yellow). */
+  .home-main {
+    padding-top: var(--home-pad-x);
+    padding-bottom: 0.75rem;
+  }
+
   .home-stage {
     position: relative;
     padding-left: calc(var(--home-pad-x) + var(--home-tree-gutter));
@@ -514,6 +521,18 @@ body:has(.home-shell) {
 
   .home-nav::before {
     display: none;
+  }
+
+  /* Remove only the dashed rule under Notes on mobile. */
+  .home-nav-row:last-child {
+    border-bottom: none;
+  }
+
+  /* Instagram ↔ UNIYAALLL left; X.COM ↔ toggle right; YouTube centered between. */
+  .home-chrome-bottom .home-chrome-inner.home-socials {
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
   }
 }
 
