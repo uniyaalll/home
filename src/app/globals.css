@@ -289,20 +289,31 @@ html[data-theme="light"] .home-grain {
   border-top: 1px dashed var(--color-line);
 }
 
+/* Chrome wider than nav so header/socials sit a little beyond the menu,
+   with the toggle mirrored on the right. Same inner box = vertical align. */
 .home-chrome-inner {
+  --home-chrome-max: 42rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
-  max-width: 36rem;
+  max-width: var(--home-chrome-max);
   margin-inline: auto;
   padding: 1rem 1.25rem;
 }
 
 @media (min-width: 640px) {
   .home-chrome-inner {
-    padding: 1.25rem 2rem;
+    --home-chrome-max: 46rem;
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-chrome-inner {
+    --home-chrome-max: 52rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -343,11 +354,18 @@ html[data-theme="light"] .home-grain {
 }
 
 .home-nav {
+  --home-nav-max: 28rem;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 36rem;
+  max-width: var(--home-nav-max);
   border-top: 1px dashed var(--color-line);
+}
+
+@media (min-width: 640px) {
+  .home-nav {
+    --home-nav-max: 30rem;
+  }
 }
 
 .home-nav-row {
