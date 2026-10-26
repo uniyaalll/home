@@ -276,9 +276,13 @@ body:has(.home-shell) {
 
 /* Fixed responsive rectangle: header / stage / footer fill one viewport. */
 .home-shell {
+  /* Distance between a nav item's top/bottom dashed lines */
+  --home-row: clamp(2.6rem, 7.2vh, 4.2rem);
+  --home-gap: var(--home-row);
   --home-chrome-max: 72rem;
   --home-pad-x: 1.25rem;
   --home-tree-gutter: 1.75rem;
+  --home-grain-opacity: 0.32; /* doubled from 0.16 */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -289,7 +293,8 @@ body:has(.home-shell) {
 
 @media (min-width: 768px) {
   .home-shell {
-    --home-pad-x: clamp(1.5rem, 4vw, 3rem);
+    /* Page inset = same as nav-row line spacing */
+    --home-pad-x: var(--home-gap);
   }
 }
 
@@ -375,7 +380,8 @@ body:has(.home-shell) {
 
 @media (min-width: 768px) {
   .home-main {
-    padding-block: 1rem;
+    /* Space below header rule / above footer rule = nav line spacing */
+    padding-block: var(--home-gap);
   }
 }
 
@@ -394,7 +400,7 @@ body:has(.home-shell) {
   .home-stage {
     grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
-    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    gap: var(--home-gap);
     align-items: stretch;
   }
 }
@@ -448,7 +454,7 @@ body:has(.home-shell) {
   pointer-events: none;
   background-size: 140px 140px, 160px 160px;
   background-repeat: repeat;
-  opacity: 0.16;
+  opacity: var(--home-grain-opacity);
   mix-blend-mode: overlay;
   animation: home-grain-drift 0.9s steps(3) infinite;
 }
@@ -516,8 +522,8 @@ body:has(.home-shell) {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  /* ~40% airier than base 3rem, but clamps so the viewport never scrolls */
-  min-height: clamp(2.6rem, 7.2vh, 4.2rem);
+  /* Row height = --home-gap used as page inset around the preview */
+  min-height: var(--home-row);
   padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem;
   border-bottom: 1px dashed var(--color-line);
   transition: color var(--transition);
@@ -619,19 +625,19 @@ body:has(.home-shell) {
 @keyframes home-grain-drift {
   0% {
     background-position: 0 0, 0 0;
-    opacity: 0.14;
+    opacity: 0.28;
   }
   33% {
     background-position: -22px 14px, 18px -10px;
-    opacity: 0.2;
+    opacity: 0.4;
   }
   66% {
     background-position: 16px -20px, -12px 22px;
-    opacity: 0.12;
+    opacity: 0.24;
   }
   100% {
     background-position: 0 0, 0 0;
-    opacity: 0.16;
+    opacity: 0.32;
   }
 }
 
