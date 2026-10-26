@@ -356,8 +356,8 @@ body:has(.home-shell) {
 }
 
 .home-intro {
-  /* 50% of body 0.875rem — desktop subheading only (hidden on mobile) */
-  font-size: 0.4375rem;
+  /* +50% from 0.4375rem — desktop subheading only (hidden on mobile) */
+  font-size: 0.65625rem;
   line-height: 1.625;
 }
 
@@ -598,8 +598,8 @@ body:has(.home-shell) {
 .home-social-link {
   display: inline-block;
   width: fit-content;
-  /* 50% of body 0.875rem on web + mobile */
-  font-size: 0.4375rem;
+  /* +50% from 0.4375rem on web + mobile */
+  font-size: 0.65625rem;
   line-height: 1.625;
   min-height: 0;
   transition: color var(--transition);
