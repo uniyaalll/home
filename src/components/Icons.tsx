@@ -276,6 +276,39 @@ export function Icon({ name, className = "h-5 w-5", size = 20 }: IconProps) {
           <circle cx="12" cy="12" r="0.75" />
         </svg>
       );
+    case "music":
+      return (
+        <svg {...common}>
+          <path
+            d="M9 18.5V7.25L19.25 5.25V16.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+          <circle cx="7" cy="18.5" r="2.25" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="17.25" cy="16.5" r="2.25" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      );
+    case "bag":
+      return (
+        <svg {...common}>
+          <path
+            d="M5.75 8.75H18.25L19.25 20.25H4.75L5.75 8.75Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+          <path
+            d="M9 8.75V6.75C9 5.09315 10.3431 3.75 12 3.75C13.6569 3.75 15 5.09315 15 6.75V8.75"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+        </svg>
+      );
     case "x":
       return (
         <svg {...common}>
