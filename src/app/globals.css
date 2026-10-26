@@ -411,10 +411,6 @@ html[data-theme="light"] .home-grain {
   transition: color var(--transition);
 }
 
-.home-nav-row:first-child {
-  border-top: 1px dashed var(--color-line);
-}
-
 /* Horizontal dashed elbow from spine to each row. */
 .home-nav-row::before {
   content: "";
