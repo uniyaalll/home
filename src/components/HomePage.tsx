@@ -6,6 +6,26 @@ import { asset } from "../lib/asset";
 import { Icon } from "./Icons";
 import { ThemeToggle } from "./ThemeToggle";
 
+function NortheastArrow() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      width="14"
+      height="14"
+      fill="none"
+      className="home-nav-arrow"
+      aria-hidden
+    >
+      <path
+        d="M4.5 11.5L11.5 4.5M11.5 4.5H6M11.5 4.5V10"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="square"
+      />
+    </svg>
+  );
+}
+
 export function HomePage() {
   return (
     <div className="home-shell relative min-h-dvh">
@@ -33,6 +53,7 @@ export function HomePage() {
               <Link key={item.label} href={item.href} className="home-nav-row text-muted">
                 <Icon name={item.icon} className="home-nav-icon" size={20} />
                 <span className="translate-y-px">{item.label}</span>
+                <NortheastArrow />
               </Link>
             ))}
           </nav>
