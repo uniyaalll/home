@@ -289,31 +289,47 @@ html[data-theme="light"] .home-grain {
   border-top: 1px dashed var(--color-line);
 }
 
-/* Chrome wider than nav so header/socials sit a little beyond the menu,
-   with the toggle mirrored on the right. Same inner box = vertical align. */
-.home-chrome-inner {
+/* Shared column: header, tree spine, and socials share one left edge. */
+.home-shell {
   --home-chrome-max: 42rem;
+  --home-chrome-pad-x: 1.25rem;
+  --home-tree-gutter: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .home-shell {
+    --home-chrome-max: 46rem;
+    --home-chrome-pad-x: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-shell {
+    --home-chrome-max: 52rem;
+    --home-chrome-pad-x: 2rem;
+  }
+}
+
+.home-chrome-inner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
   max-width: var(--home-chrome-max);
   margin-inline: auto;
-  padding: 1rem 1.25rem;
+  padding: 1rem var(--home-chrome-pad-x);
 }
 
 @media (min-width: 640px) {
   .home-chrome-inner {
-    --home-chrome-max: 46rem;
-    padding: 1.25rem 1.5rem;
+    padding-block: 1.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .home-chrome-inner {
-    --home-chrome-max: 52rem;
-    padding: 1.5rem 2rem;
+    padding-block: 1.5rem;
   }
 }
 
@@ -344,31 +360,48 @@ html[data-theme="light"] .home-grain {
   min-height: 100dvh;
   align-items: center;
   justify-content: center;
-  padding: 7.5rem 1.25rem;
+  padding: 7.5rem 0;
 }
 
 @media (min-width: 640px) {
   .home-main {
-    padding: 8.5rem 2rem;
+    padding-block: 8.5rem;
   }
+}
+
+.home-nav-shell {
+  width: 100%;
+  max-width: var(--home-chrome-max);
+  margin-inline: auto;
+  padding-inline: var(--home-chrome-pad-x);
 }
 
 .home-nav {
-  --home-nav-max: 28rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: var(--home-nav-max);
-  border-top: 1px dashed var(--color-line);
+  padding-left: var(--home-tree-gutter);
 }
 
-@media (min-width: 640px) {
-  .home-nav {
-    --home-nav-max: 30rem;
-  }
+/* Vertical dashed spine — left edge aligns with header + socials. */
+.home-nav::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 1.5rem;
+  left: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-line) 0 3px,
+    transparent 3px 6px
+  );
 }
 
 .home-nav-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -376,6 +409,22 @@ html[data-theme="light"] .home-grain {
   padding: 0.75rem 0.25rem;
   border-bottom: 1px dashed var(--color-line);
   transition: color var(--transition);
+}
+
+.home-nav-row:first-child {
+  border-top: 1px dashed var(--color-line);
+}
+
+/* Horizontal dashed elbow from spine to each row. */
+.home-nav-row::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--home-tree-gutter) * -1);
+  width: var(--home-tree-gutter);
+  border-top: 1px dashed var(--color-line);
+  transform: translateY(-0.5px);
 }
 
 .home-nav-icon {

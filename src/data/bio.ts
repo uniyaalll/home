@@ -10,8 +10,8 @@ export const BIO = {
 export const NAV_LINKS = [
   { label: "Work", href: "/", icon: "folder" },
   { label: "Projects", href: "/", icon: "labs" },
-  { label: "Sound", href: "/", icon: "record" },
-  { label: "Supply", href: "/", icon: "siphon" },
+  { label: "Sound", href: "/", icon: "music" },
+  { label: "Supply", href: "/", icon: "bag" },
   { label: "Notes", href: "/", icon: "file" },
 ] as const;
 

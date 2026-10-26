@@ -27,14 +27,16 @@ export function HomePage() {
       </header>
 
       <main className="home-main">
-        <nav className="home-nav" aria-label="Primary">
-          {NAV_LINKS.map((item) => (
-            <Link key={item.label} href={item.href} className="home-nav-row text-muted">
-              <Icon name={item.icon} className="home-nav-icon" size={20} />
-              <span className="translate-y-px">{item.label}</span>
-            </Link>
-          ))}
-        </nav>
+        <div className="home-nav-shell">
+          <nav className="home-nav" aria-label="Primary">
+            {NAV_LINKS.map((item) => (
+              <Link key={item.label} href={item.href} className="home-nav-row text-muted">
+                <Icon name={item.icon} className="home-nav-icon" size={20} />
+                <span className="translate-y-px">{item.label}</span>
+              </Link>
+            ))}
+          </nav>
+        </div>
       </main>
 
       <footer className="home-footer home-chrome-bottom">
