@@ -247,110 +247,100 @@ a {
   background-color: var(--color-online);
 }
 
-/* ——— Link in bio ——— */
-.bio-atmosphere {
+/* ——— Personal homepage (tr.af language) ——— */
+.home-atmosphere {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, var(--color-fill), transparent 60%),
-    radial-gradient(circle at 50% 110%, var(--color-fill), transparent 45%),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 47.5px,
-      var(--color-line) 47.5px,
-      var(--color-line) 48px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 47.5px,
-      var(--color-line) 47.5px,
-      var(--color-line) 48px
-    );
-  mask-image: radial-gradient(ellipse 70% 65% at 50% 35%, #000 20%, transparent 75%);
-  opacity: 0.425;
+    radial-gradient(ellipse 70% 45% at 20% 0%, var(--color-fill), transparent 55%),
+    radial-gradient(circle at 80% 100%, var(--color-fill), transparent 40%);
+  opacity: 0.9;
 }
 
-.bio-brand {
-  font-size: clamp(1.125rem, 3.75vw, 1.5rem);
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+.home-avatar {
+  width: 5rem;
+  height: 5rem;
+  aspect-ratio: 1 / 1;
+  border: 1px dashed var(--color-line);
+  background: var(--color-fill);
+  border-radius: var(--window-radius);
+  flex-shrink: 0;
 }
 
-.bio-handle {
-  font-size: 0.4375rem; /* 50% of body 0.875rem */
+.home-avatar-img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px dashed var(--color-line);
+  border-radius: var(--window-radius);
+}
+
+@media (min-width: 640px) {
+  .home-avatar,
+  .home-avatar-img {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+.home-name {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.home-intro {
+  font-size: 0.875rem;
   line-height: 1.625;
 }
 
-.bio-handle-glow {
-  color: var(--color-online);
-  text-shadow: 0 0 0.75em color-mix(in srgb, var(--color-online) 70%, transparent);
-  animation: bio-handle-glow 2.4s ease-in-out infinite;
+.home-nav-link,
+.home-social-link {
+  display: inline-block;
+  width: fit-content;
+  min-height: 1.625rem;
+  transition: color var(--transition);
 }
 
-.bio-mark,
-.bio-header,
-.bio-link,
-.bio-social,
-.bio-footer {
-  animation: bio-rise 0.55s ease-out both;
+.home-nav-link:hover,
+.home-nav-link:focus-visible,
+.home-social-link:hover,
+.home-social-link:focus-visible {
+  color: var(--color-fg);
 }
 
-.bio-header {
-  animation-delay: 40ms;
+.home-profile,
+.home-nav,
+.home-socials,
+.home-toolbar {
+  animation: home-rise 0.55s ease-out both;
 }
 
-.bio-mark {
+.home-toolbar {
   animation-delay: 0ms;
-  animation-name: bio-mark-in;
 }
 
-.bio-footer {
-  animation-delay: 560ms;
+.home-profile {
+  animation-delay: 60ms;
 }
 
-.bio-link,
-.bio-social {
-  transition-property: color, border-color, background-color, transform;
-  transition-duration: var(--transition);
-  transition-timing-function: ease-out;
+.home-nav {
+  animation-delay: 140ms;
 }
 
-.bio-link:hover,
-.bio-link:focus-visible {
-  transform: translateY(-1px);
+.home-socials {
+  animation-delay: 220ms;
 }
 
-@keyframes bio-rise {
+@keyframes home-rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes bio-mark-in {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes bio-handle-glow {
-  0%,
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 0.85em color-mix(in srgb, var(--color-online) 75%, transparent);
-  }
-  50% {
-    opacity: 0.72;
-    text-shadow: 0 0 0.35em color-mix(in srgb, var(--color-online) 40%, transparent);
   }
 }
 
@@ -359,17 +349,10 @@ a {
     --transition: 0s;
   }
 
-  .bio-mark,
-  .bio-header,
-  .bio-link,
-  .bio-social,
-  .bio-footer,
-  .bio-handle-glow {
+  .home-profile,
+  .home-nav,
+  .home-socials,
+  .home-toolbar {
     animation: none !important;
-  }
-
-  .bio-link:hover,
-  .bio-link:focus-visible {
-    transform: none;
   }
 }

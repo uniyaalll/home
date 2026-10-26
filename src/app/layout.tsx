@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "../lib/theme";
-import { BRAND } from "../data/site";
+import { BIO } from "../data/bio";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: BRAND,
-    template: `${BRAND} | %s`,
+    default: BIO.name,
+    template: `${BIO.name} | %s`,
   },
-  description: "Personal site of uniyaalll. Experiments, works, and notes.",
+  description: BIO.intro,
   metadataBase: new URL("https://uniyaalll.github.io/home"),
   openGraph: {
-    title: BRAND,
-    description: "Personal site of uniyaalll. Experiments, works, and notes.",
+    title: BIO.name,
+    description: BIO.intro,
     images: ["/og.png"],
   },
   icons: {
