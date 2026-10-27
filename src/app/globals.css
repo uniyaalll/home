@@ -533,32 +533,6 @@ body:has(.home-shell) {
     display: none;
   }
 
-  .home-nav-row {
-    padding-left: 0.75rem;
-    border-bottom: none;
-  }
-
-  /* Full-width dashed rule from the spine to the right edge of the row. */
-  .home-nav-row::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-bottom: 1px dashed var(--color-line);
-  }
-
-  /* Mid-row elbows not needed once rules touch the spine. */
-  .home-nav-row::before {
-    display: none;
-  }
-
-  /* Remove only the dashed rule under Notes on mobile/portrait. */
-  .home-nav-row:last-child::after {
-    display: none;
-  }
-
   /* Centered social cluster; gap halved from desktop 2.5rem → 1.25rem */
   .home-chrome-bottom .home-chrome-inner.home-socials {
     justify-content: center;
@@ -602,6 +576,36 @@ body:has(.home-shell) {
   width: var(--home-tree-gutter);
   border-top: 1px dashed var(--color-line);
   transform: translateY(-0.5px);
+}
+
+/* Stacked mobile/portrait: row rules must come after base .home-nav-row so
+   they win the cascade (padding shorthand / border-bottom / elbows). */
+@media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
+  .home-nav-row {
+    padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem clamp(0.55rem, 1.4vh, 1.05rem) 0.75rem;
+    border-bottom: none;
+  }
+
+  /* Full-width dashed rule from the spine to the right edge of the row. */
+  .home-nav-row::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  /* Mid-row elbows not needed once rules touch the spine. */
+  .home-nav-row::before {
+    display: none;
+  }
+
+  /* Remove only the dashed rule under Notes on mobile/portrait. */
+  .home-nav-row:last-child::after {
+    display: none;
+  }
 }
 
 .home-nav-icon {
