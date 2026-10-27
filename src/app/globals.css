@@ -582,24 +582,44 @@ body:has(.home-shell) {
    they win the cascade (padding shorthand / border-bottom / elbows). */
 @media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
   .home-nav-row {
-    padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem clamp(0.55rem, 1.4vh, 1.05rem) 0.75rem;
+    /* Left pad = elbow length; icons sit just past the connector. */
+    --home-elbow: 0.75rem;
+    padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem clamp(0.55rem, 1.4vh, 1.05rem)
+      var(--home-elbow);
     border-bottom: none;
   }
 
-  /* Full-width dashed rule from the spine to the right edge of the row. */
+  /* Full-width dashed rule from the spine to the right edge of the row.
+     Gradient (not border-style:dashed) so the first dash starts at the spine. */
   .home-nav-row::after {
     content: "";
     pointer-events: none;
     position: absolute;
-    left: 0;
+    left: -1px;
     right: 0;
     bottom: 0;
-    border-bottom: 1px dashed var(--color-line);
+    height: 1px;
+    border: none;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-line) 0 3px,
+      transparent 3px 6px
+    );
   }
 
-  /* Mid-row elbows not needed once rules touch the spine. */
+  /* Elbow from the vertical spine into each icon.
+     Overlap the spine by 1px so the first dash visibly joins it. */
   .home-nav-row::before {
-    display: none;
+    display: block;
+    left: -1px;
+    width: calc(var(--home-elbow) + 1px);
+    height: 1px;
+    border: none;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-line) 0 3px,
+      transparent 3px 6px
+    );
   }
 
   /* Remove only the dashed rule under Notes on mobile/portrait. */
