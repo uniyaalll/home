@@ -49,6 +49,8 @@ export function HomePage() {
 
       <main className="home-main">
         <div className="home-stage">
+          {/* One pixel-grid tree for spine + elbows + separators (phone & desktop). */}
+          <HomeNavTree />
           <div className="home-preview">
             <div className="home-preview-frame">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -70,7 +72,6 @@ export function HomePage() {
           </div>
 
           <nav className="home-nav" aria-label="Primary">
-            <HomeNavTree />
             {NAV_LINKS.map((item) => (
               <Link key={item.label} href={item.href} className="home-nav-row text-muted">
                 <Icon name={item.icon} className="home-nav-icon" size={20} />

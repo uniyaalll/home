@@ -426,6 +426,7 @@ body:has(.home-shell) {
 }
 
 .home-stage {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(0, 1fr) auto;
@@ -508,29 +509,24 @@ body:has(.home-shell) {
   --home-elbow: var(--home-tree-gutter);
 }
 
-/* SVG elbows + separators (see HomeNavTree). */
+/*
+ * Pixel-grid tree (HomeNavTree) owns the spine, elbows, and separators.
+ * No CSS dashed borders / gradients for those — they were the uneven joins.
+ */
 .home-nav-tree {
   pointer-events: none;
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
   z-index: 1;
 }
 
-/* Vertical dashed spine — starts above Work; left edge = title/socials.
-   Paints above SVG arms so L-stubs never show as a cross left of the spine. */
-.home-nav::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  top: -1.5rem;
-  bottom: 1.5rem;
-  left: 0;
-  width: 1px;
-  background: var(--home-dash-y);
-  z-index: 2;
+.home-nav::before,
+.home-stage::before {
+  content: none;
+  display: none;
 }
 
 /* Stacked layout: phones + iPad/tablet portrait (image above, nav below). */
@@ -543,22 +539,8 @@ body:has(.home-shell) {
   }
 
   .home-stage {
-    position: relative;
     padding-left: calc(var(--home-pad-x) + var(--home-tree-gutter));
     padding-right: var(--home-pad-x);
-  }
-
-  .home-stage::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    bottom: 1.5rem;
-    left: var(--home-pad-x);
-    width: 1px;
-    background: var(--home-dash-y);
-    /* Above SVG arms so joins never cut left through the spine. */
-    z-index: 2;
   }
 
   .home-preview {
@@ -566,15 +548,11 @@ body:has(.home-shell) {
     width: calc(100% + var(--home-tree-gutter));
   }
 
-  /* Pull nav flush to the spine so horizontal rules meet the vertical line. */
+  /* Pull nav flush to the spine so elbows meet the vertical line. */
   .home-nav {
     margin-left: calc(var(--home-tree-gutter) * -1);
     width: calc(100% + var(--home-tree-gutter));
     padding-left: 0;
-  }
-
-  .home-nav::before {
-    display: none;
   }
 
   /* Centered social cluster; gap halved from desktop 2.5rem → 1.25rem */
