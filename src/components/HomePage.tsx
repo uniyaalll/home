@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BIO, NAV_LINKS, SOCIAL_LINKS } from "../data/bio";
 import { asset } from "../lib/asset";
+import { HomeNavTree } from "./HomeNavTree";
 import { Icon } from "./Icons";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -69,6 +70,7 @@ export function HomePage() {
           </div>
 
           <nav className="home-nav" aria-label="Primary">
+            <HomeNavTree />
             {NAV_LINKS.map((item) => (
               <Link key={item.label} href={item.href} className="home-nav-row text-muted">
                 <Icon name={item.icon} className="home-nav-icon" size={20} />
