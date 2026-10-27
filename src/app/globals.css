@@ -514,7 +514,8 @@ body:has(.home-shell) {
       var(--color-line) 0 3px,
       transparent 3px 6px
     );
-    z-index: 1;
+    /* Above elbows/row rules so joins read as T’s, never crosses through the spine. */
+    z-index: 2;
   }
 
   .home-preview {
@@ -598,6 +599,7 @@ body:has(.home-shell) {
     right: 0;
     bottom: 0;
     height: 1px;
+    z-index: 0;
     border: none;
     background: repeating-linear-gradient(
       to right,
@@ -612,6 +614,7 @@ body:has(.home-shell) {
     left: 1px;
     width: calc(var(--home-elbow) - 1px);
     height: 1px;
+    z-index: 0;
     border: none;
     background: repeating-linear-gradient(
       to right,
