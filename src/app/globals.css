@@ -589,13 +589,12 @@ body:has(.home-shell) {
     border-bottom: none;
   }
 
-  /* Full-width dashed rule from the spine to the right edge of the row.
-     Gradient (not border-style:dashed) so the first dash starts at the spine. */
+  /* Full-width dashed rule: starts just right of the 1px spine (T-join, no cross). */
   .home-nav-row::after {
     content: "";
     pointer-events: none;
     position: absolute;
-    left: -1px;
+    left: 1px;
     right: 0;
     bottom: 0;
     height: 1px;
@@ -607,12 +606,11 @@ body:has(.home-shell) {
     );
   }
 
-  /* Elbow from the vertical spine into each icon.
-     Overlap the spine by 1px so the first dash visibly joins it. */
+  /* Elbow sprouts from the spine into each icon — abut, never cross left of spine. */
   .home-nav-row::before {
     display: block;
-    left: -1px;
-    width: calc(var(--home-elbow) + 1px);
+    left: 1px;
+    width: calc(var(--home-elbow) - 1px);
     height: 1px;
     border: none;
     background: repeating-linear-gradient(
