@@ -582,8 +582,8 @@ body:has(.home-shell) {
    they win the cascade (padding shorthand / border-bottom / elbows). */
 @media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
   .home-nav-row {
-    /* Left pad = elbow length; icons sit just past the connector. */
-    --home-elbow: 0.75rem;
+    /* Elbow spans the same gutter as desktop, from spine into the icon. */
+    --home-elbow: var(--home-tree-gutter);
     padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem clamp(0.55rem, 1.4vh, 1.05rem)
       var(--home-elbow);
     border-bottom: none;
