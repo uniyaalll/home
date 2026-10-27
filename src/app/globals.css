@@ -155,6 +155,10 @@ a {
 
 .tree-list > * {
   position: relative;
+  /* Shared dash grid with the home nav (3px on / 3px off). */
+  --tree-dash: 3px;
+  --tree-dash-gap: 3px;
+  --tree-dash-period: 6px;
 }
 .tree-list > *::before {
   pointer-events: none;
@@ -166,16 +170,29 @@ a {
   width: 1px;
   background: repeating-linear-gradient(
     to bottom,
-    var(--color-line) 0 3px,
-    transparent 3px 6px
+    var(--color-line) 0 var(--tree-dash),
+    transparent var(--tree-dash) var(--tree-dash-period)
   );
 }
+/* Last child: true L — same box draws the vertical stem + horizontal arm. */
 .tree-list > *:last-child::before {
   bottom: auto;
   height: 1.5rem;
   width: 0.75rem;
-  border-bottom: 1px dashed var(--color-line);
-  background: none;
+  border: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-line) 0 var(--tree-dash),
+      transparent var(--tree-dash) var(--tree-dash-period)
+    )
+      left top / 1px 100% no-repeat,
+    repeating-linear-gradient(
+      to right,
+      var(--color-line) 0 var(--tree-dash),
+      transparent var(--tree-dash) var(--tree-dash-period)
+    )
+      left bottom / 100% 1px no-repeat;
 }
 .tree-list > *:not(:last-child)::after {
   pointer-events: none;
@@ -185,7 +202,13 @@ a {
   transform: translateY(-1px);
   left: calc(var(--spacing, 0.25rem) * -5.5);
   width: 0.75rem;
-  border-bottom: 1px dashed var(--color-line);
+  height: 1px;
+  border: none;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-line) 0 var(--tree-dash),
+    transparent var(--tree-dash) var(--tree-dash-period)
+  );
 }
 .tree-list > *:first-child:not(:last-child)::after {
   top: 2.25rem;
@@ -282,6 +305,20 @@ body:has(.home-shell) {
   --home-chrome-max: 72rem;
   --home-pad-x: 1.25rem;
   --home-tree-gutter: 1.75rem;
+  /* Equidistant dash grid — same 3/3 rhythm as tr.af */
+  --home-dash: 3px;
+  --home-dash-gap: 3px;
+  --home-dash-period: 6px;
+  --home-dash-y: repeating-linear-gradient(
+    to bottom,
+    var(--color-line) 0 var(--home-dash),
+    transparent var(--home-dash) var(--home-dash-period)
+  );
+  --home-dash-x: repeating-linear-gradient(
+    to right,
+    var(--color-line) 0 var(--home-dash),
+    transparent var(--home-dash) var(--home-dash-period)
+  );
   --home-grain-opacity: 0.32; /* doubled from 0.16 */
   position: relative;
   display: flex;
@@ -468,9 +505,22 @@ body:has(.home-shell) {
   flex-direction: column;
   width: 100%;
   padding-left: var(--home-tree-gutter);
+  --home-elbow: var(--home-tree-gutter);
 }
 
-/* Vertical dashed spine — starts above Work; left edge = title/socials. */
+/* SVG elbows + separators (see HomeNavTree). */
+.home-nav-tree {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Vertical dashed spine — starts above Work; left edge = title/socials.
+   Paints above SVG arms so L-stubs never show as a cross left of the spine. */
 .home-nav::before {
   content: "";
   pointer-events: none;
@@ -479,11 +529,8 @@ body:has(.home-shell) {
   bottom: 1.5rem;
   left: 0;
   width: 1px;
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--color-line) 0 3px,
-    transparent 3px 6px
-  );
+  background: var(--home-dash-y);
+  z-index: 2;
 }
 
 /* Stacked layout: phones + iPad/tablet portrait (image above, nav below). */
@@ -509,12 +556,8 @@ body:has(.home-shell) {
     bottom: 1.5rem;
     left: var(--home-pad-x);
     width: 1px;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--color-line) 0 3px,
-      transparent 3px 6px
-    );
-    /* Above elbows/row rules so joins read as T’s, never crosses through the spine. */
+    background: var(--home-dash-y);
+    /* Above SVG arms so joins never cut left through the spine. */
     z-index: 2;
   }
 
@@ -544,13 +587,15 @@ body:has(.home-shell) {
 
 .home-nav-row {
   position: relative;
+  z-index: 3; /* above tree strokes so icons/labels stay clickable & crisp */
   display: flex;
   align-items: center;
   gap: 0.75rem;
   /* Row height = --home-gap used as page inset around the preview */
   min-height: var(--home-row);
   padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem;
-  border-bottom: 1px dashed var(--color-line);
+  /* Separators + elbows are drawn by HomeNavTree (equal 3/3 dashes). */
+  border-bottom: none;
   transition: color var(--transition);
 }
 
@@ -567,65 +612,19 @@ body:has(.home-shell) {
   opacity: 1;
 }
 
-/* Horizontal dashed elbow from spine to each row. */
-.home-nav-row::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: calc(var(--home-tree-gutter) * -1);
-  width: var(--home-tree-gutter);
-  border-top: 1px dashed var(--color-line);
-  transform: translateY(-0.5px);
+/* No CSS elbows — HomeNavTree draws every connector with the shared dash grid. */
+.home-nav-row::before,
+.home-nav-row::after {
+  content: none;
+  display: none;
 }
 
-/* Stacked mobile/portrait: row rules must come after base .home-nav-row so
-   they win the cascade (padding shorthand / border-bottom / elbows). */
+/* Stacked mobile/portrait: icons sit past the elbow length. */
 @media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
   .home-nav-row {
-    /* Elbow spans the same gutter as desktop, from spine into the icon. */
     --home-elbow: var(--home-tree-gutter);
     padding: clamp(0.55rem, 1.4vh, 1.05rem) 0.25rem clamp(0.55rem, 1.4vh, 1.05rem)
       var(--home-elbow);
-    border-bottom: none;
-  }
-
-  /* Full-width dashed rule: starts just right of the 1px spine (T-join, no cross). */
-  .home-nav-row::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    left: 1px;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    z-index: 0;
-    border: none;
-    background: repeating-linear-gradient(
-      to right,
-      var(--color-line) 0 3px,
-      transparent 3px 6px
-    );
-  }
-
-  /* Elbow sprouts from the spine into each icon — abut, never cross left of spine. */
-  .home-nav-row::before {
-    display: block;
-    left: 1px;
-    width: calc(var(--home-elbow) - 1px);
-    height: 1px;
-    z-index: 0;
-    border: none;
-    background: repeating-linear-gradient(
-      to right,
-      var(--color-line) 0 3px,
-      transparent 3px 6px
-    );
-  }
-
-  /* Remove only the dashed rule under Notes on mobile/portrait. */
-  .home-nav-row:last-child::after {
-    display: none;
   }
 }
 
