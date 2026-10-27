@@ -291,7 +291,8 @@ body:has(.home-shell) {
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+/* Desktop / iPad landscape (not portrait tablets). */
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
   .home-shell {
     /* Page inset = same as nav-row line spacing */
     --home-pad-x: var(--home-gap);
@@ -334,7 +335,7 @@ body:has(.home-shell) {
   padding-block: 0.75rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
   .home-chrome-inner {
     padding-block: 1rem;
   }
@@ -361,7 +362,8 @@ body:has(.home-shell) {
   line-height: 1.625;
 }
 
-@media (max-width: 767px) {
+/* Phone + iPad/tablet portrait use the stacked “smartphone” chrome. */
+@media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
   .home-intro {
     display: none;
   }
@@ -379,7 +381,7 @@ body:has(.home-shell) {
   padding-block: 0.75rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
   .home-main {
     /* Space below header rule / above footer rule = nav line spacing */
     padding-block: var(--home-gap);
@@ -397,7 +399,7 @@ body:has(.home-shell) {
   min-height: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
   .home-stage {
     grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
@@ -419,7 +421,7 @@ body:has(.home-shell) {
   min-height: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
   .home-preview {
     order: 2;
   }
@@ -484,8 +486,8 @@ body:has(.home-shell) {
   );
 }
 
-/* On mobile, preview sits above nav; its left border meets the tree spine. */
-@media (max-width: 767px) {
+/* Stacked layout: phones + iPad/tablet portrait (image above, nav below). */
+@media (max-width: 767px), (max-width: 1099px) and (orientation: portrait) {
   /* Top gap above image = same as left/right image margins (--home-pad-x).
      Don't change side padding (yellow). */
   .home-main {
@@ -524,7 +526,7 @@ body:has(.home-shell) {
     display: none;
   }
 
-  /* Remove only the dashed rule under Notes on mobile. */
+  /* Remove only the dashed rule under Notes on mobile/portrait. */
   .home-nav-row:last-child {
     border-bottom: none;
   }
