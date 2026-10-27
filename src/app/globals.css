@@ -522,13 +522,41 @@ body:has(.home-shell) {
     width: calc(100% + var(--home-tree-gutter));
   }
 
+  /* Pull nav flush to the spine so horizontal rules meet the vertical line. */
+  .home-nav {
+    margin-left: calc(var(--home-tree-gutter) * -1);
+    width: calc(100% + var(--home-tree-gutter));
+    padding-left: 0;
+  }
+
   .home-nav::before {
     display: none;
   }
 
-  /* Remove only the dashed rule under Notes on mobile/portrait. */
-  .home-nav-row:last-child {
+  .home-nav-row {
+    padding-left: 0.75rem;
     border-bottom: none;
+  }
+
+  /* Full-width dashed rule from the spine to the right edge of the row. */
+  .home-nav-row::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  /* Mid-row elbows not needed once rules touch the spine. */
+  .home-nav-row::before {
+    display: none;
+  }
+
+  /* Remove only the dashed rule under Notes on mobile/portrait. */
+  .home-nav-row:last-child::after {
+    display: none;
   }
 
   /* Centered social cluster; gap halved from desktop 2.5rem → 1.25rem */
