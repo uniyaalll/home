@@ -24,7 +24,7 @@ export const NAV_LINKS = [
     opens: "projects",
   },
   /* These return to the static home preview on desktop. */
-  { label: "Sound", id: "sound", href: "/", icon: "music", opens: "home" },
+  { label: "Sounds", id: "sound", href: "/", icon: "music", opens: "home" },
   { label: "Supply", id: "supply", href: "/", icon: "bag", opens: "home" },
   { label: "Notes", id: "notes", href: "/", icon: "file", opens: "home" },
 ] as const satisfies ReadonlyArray<{
