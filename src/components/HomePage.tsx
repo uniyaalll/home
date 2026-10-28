@@ -18,6 +18,7 @@ import {
 import { asset } from "../lib/asset";
 import { HomeNavTree } from "./HomeNavTree";
 import { Icon } from "./Icons";
+import { SoundsPlayer } from "./SoundsPlayer";
 import { ThemeToggle } from "./ThemeToggle";
 
 /** Desktop / iPad landscape — right pane swaps; chrome + nav stay fixed. */
@@ -72,7 +73,7 @@ function isDesktopLayout() {
 
 function viewFromHash(): DesktopView {
   const id = window.location.hash.replace(/^#/, "");
-  if (id === "work" || id === "projects") return id;
+  if (id === "work" || id === "projects" || id === "sounds") return id;
   return "home";
 }
 
@@ -94,9 +95,9 @@ export function HomePage() {
     openView(viewFromHash(), false);
   }, [openView]);
 
-  // Reset gallery scroll when switching into a section.
+  // Reset gallery scroll when switching into a scrollable section.
   useEffect(() => {
-    if (view === "home") return;
+    if (view !== "work" && view !== "projects") return;
     const el = scrollerRef.current;
     if (el) el.scrollTop = 0;
   }, [view]);
@@ -152,12 +153,17 @@ export function HomePage() {
           {/*
             Desktop right column:
             - home → static single preview (no scroll)
+            - sounds → static music player (same frame size)
             - work / projects → scrollable gallery with --home-gap between frames
           */}
           <div className="home-desktop-pane">
             {view === "home" ? (
               <div className="home-preview home-preview--desktop">
                 <PreviewFrame alt={BIO.previewAlt} />
+              </div>
+            ) : view === "sounds" ? (
+              <div className="home-preview home-preview--desktop">
+                <SoundsPlayer />
               </div>
             ) : (
               <div

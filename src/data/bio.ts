@@ -12,7 +12,7 @@ export const BIO = {
 export type NavId = "work" | "projects" | "sound" | "supply" | "notes";
 
 /** Desktop right-pane views. `home` = static preview; galleries scroll. */
-export type DesktopView = "home" | "work" | "projects";
+export type DesktopView = "home" | "work" | "projects" | "sounds";
 
 export const NAV_LINKS = [
   { label: "Work", id: "work", href: "/#work", icon: "folder", opens: "work" },
@@ -23,8 +23,14 @@ export const NAV_LINKS = [
     icon: "labs",
     opens: "projects",
   },
+  {
+    label: "Sounds",
+    id: "sound",
+    href: "/#sounds",
+    icon: "music",
+    opens: "sounds",
+  },
   /* These return to the static home preview on desktop. */
-  { label: "Sound", id: "sound", href: "/", icon: "music", opens: "home" },
   { label: "Supply", id: "supply", href: "/", icon: "bag", opens: "home" },
   { label: "Notes", id: "notes", href: "/", icon: "file", opens: "home" },
 ] as const satisfies ReadonlyArray<{
@@ -34,6 +40,34 @@ export const NAV_LINKS = [
   icon: "folder" | "labs" | "music" | "bag" | "file";
   opens: DesktopView;
 }>;
+
+/**
+ * Placeholder Sounds tracks (YouTube streams — swap when real files land).
+ * IDs match the existing /lofi /soul /ambient pages.
+ */
+export const SOUND_TRACKS = [
+  {
+    id: "lofi",
+    title: "Lofi",
+    artist: "Live stream",
+    videoId: "rFZHOHl-L8A",
+  },
+  {
+    id: "soul",
+    title: "Soul",
+    artist: "Live stream",
+    videoId: "E2vONfzoyRI",
+  },
+  {
+    id: "ambient",
+    title: "Ambient",
+    artist: "Live stream",
+    videoId: "S_MOd40zlYU",
+  },
+] as const;
+
+export type SoundTrack = (typeof SOUND_TRACKS)[number];
+export type RepeatMode = "off" | "all" | "one";
 
 /** Placeholder galleries — same preview image stacked with page-gap spacing. */
 export const SECTION_GALLERIES = {
