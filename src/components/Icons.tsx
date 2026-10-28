@@ -372,6 +372,131 @@ export function Icon({ name, className = "h-5 w-5", size = 20 }: IconProps) {
           />
         </svg>
       );
+    case "skip-back":
+      return (
+        <svg {...common}>
+          <path
+            d="M18.25 5.25L9.75 12L18.25 18.75V5.25Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+          <path
+            d="M5.75 5.25V18.75"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+        </svg>
+      );
+    case "skip-forward":
+      return (
+        <svg {...common}>
+          <path
+            d="M5.75 5.25L14.25 12L5.75 18.75V5.25Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+          <path
+            d="M18.25 5.25V18.75"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+        </svg>
+      );
+    case "heart":
+      return (
+        <svg {...common}>
+          <path
+            d="M12 19.25L4.75 12.5C3.25 11 3.25 8.5 4.9 7C6.4 5.65 8.65 5.85 10 7.35L12 9.5L14 7.35C15.35 5.85 17.6 5.65 19.1 7C20.75 8.5 20.75 11 19.25 12.5L12 19.25Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "heart-fill":
+      return (
+        <svg {...common}>
+          <path d="M12 19.25L4.75 12.5C3.25 11 3.25 8.5 4.9 7C6.4 5.65 8.65 5.85 10 7.35L12 9.5L14 7.35C15.35 5.85 17.6 5.65 19.1 7C20.75 8.5 20.75 11 19.25 12.5L12 19.25Z" />
+        </svg>
+      );
+    case "share":
+      return (
+        <svg {...common}>
+          <path
+            d="M15.25 7.75L19.25 3.75L15.25 3.75M19.25 3.75V7.75M19.25 3.75L12.5 10.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+          <path
+            d="M10.75 5.75H5.75V19.25H19.25V14.25"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+        </svg>
+      );
+    case "repeat":
+      return (
+        <svg {...common}>
+          <path
+            d="M6.75 8.75H15.25V6.25L19.25 9.75L15.25 13.25V10.75H6.75V8.75Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M17.25 15.25H8.75V17.75L4.75 14.25L8.75 10.75V13.25H17.25V15.25Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "repeat-1":
+      return (
+        <svg {...common}>
+          <path
+            d="M6.75 8.75H15.25V6.25L19.25 9.75L15.25 13.25V10.75H6.75V8.75Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M17.25 15.25H8.75V17.75L4.75 14.25L8.75 10.75V13.25H17.25V15.25Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M11.5 15.75V18.25M11.5 15.75H12.5V18.25"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="square"
+          />
+        </svg>
+      );
     case "mute":
       return (
         <svg {...common}>
