@@ -387,10 +387,12 @@ body:has(.home-shell) {
 }
 
 .home-name {
+  display: inline-block;
   font-size: 0.875rem;
   line-height: 1.625;
   font-weight: 400;
   letter-spacing: 0;
+  text-decoration: none;
 }
 
 .home-intro {
@@ -454,8 +456,8 @@ body:has(.home-shell) {
   height: 100%;
 }
 
-/* Desktop scroll column — hidden on phone / portrait (mobile keeps .home-preview). */
-.home-scroller {
+/* Desktop right column — hidden on phone / portrait. */
+.home-desktop-pane {
   display: none;
 }
 
@@ -465,38 +467,56 @@ body:has(.home-shell) {
 }
 
 @media (min-width: 768px) and (orientation: landscape), (min-width: 1100px) {
-  /* Fixed left nav; only the right column scrolls (tr.af-style). */
+  /* Fixed chrome + left nav; right pane swaps home ↔ gallery. */
   .home-preview--mobile {
     display: none;
   }
 
-  .home-scroller {
+  .home-desktop-pane {
     order: 2;
     display: flex;
     flex-direction: column;
     min-width: 0;
     min-height: 0;
     height: 100%;
+  }
+
+  .home-preview--desktop {
+    order: unset;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+  }
+
+  /* Work / Projects: scrollable stack; gap = page margin (--home-gap). */
+  .home-scroller {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--home-gap);
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
-  .home-panel {
+  .home-gallery-item {
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
     min-height: 100%;
     display: flex;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
 
   .home-nav {
     order: 1;
     align-self: center;
+  }
+
+  .home-nav-row[aria-current="page"] {
+    color: var(--color-fg);
   }
 }
 
