@@ -10,11 +10,11 @@ export const BIO = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Work", href: "/", icon: "folder" },
-  { label: "Projects", href: "/", icon: "labs" },
-  { label: "Sound", href: "/", icon: "music" },
-  { label: "Supply", href: "/", icon: "bag" },
-  { label: "Notes", href: "/", icon: "file" },
+  { label: "Work", id: "work", href: "/#work", icon: "folder" },
+  { label: "Projects", id: "projects", href: "/#projects", icon: "labs" },
+  { label: "Sound", id: "sound", href: "/#sound", icon: "music" },
+  { label: "Supply", id: "supply", href: "/#supply", icon: "bag" },
+  { label: "Notes", id: "notes", href: "/#notes", icon: "file" },
 ] as const;
 
 export const SOCIAL_LINKS = [
