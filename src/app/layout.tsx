@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ScrambleHover } from "../components/ScrambleHover";
 import { ThemeProvider } from "../lib/theme";
 import { BIO } from "../data/bio";
 import "./globals.css";
@@ -45,7 +46,10 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="min-h-dvh">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ScrambleHover />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
